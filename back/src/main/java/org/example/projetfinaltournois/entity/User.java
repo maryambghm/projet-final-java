@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.projetfinaltournois.entity.enums.Role;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
