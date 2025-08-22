@@ -1,20 +1,16 @@
 package org.example.projetfinaltournois.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class UserDto {
-    private UUID idUser;
+public class LoginRequestDto {
     private String email;
-    private String lastname;
-    private String firstname;
-    private String avatar;
+    private String password;
 }

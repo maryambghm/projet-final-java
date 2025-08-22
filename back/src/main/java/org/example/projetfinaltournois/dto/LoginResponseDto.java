@@ -5,16 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Builder
-public class UserDto {
-    private UUID idUser;
-    private String email;
-    private String lastname;
-    private String firstname;
-    private String avatar;
+public class LoginResponseDto {
+    private String token;
 }

@@ -8,13 +8,15 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class UserDto {
+public class RegisterResponseDto {
     private UUID idUser;
     private String email;
     private String lastname;
     private String firstname;
     private String avatar;
+    private int role;
+
 }
