@@ -2,16 +2,18 @@ package org.example.projetfinaltournois.controller;
 
 import org.example.projetfinaltournois.entity.Tournament;
 import org.example.projetfinaltournois.entity.User;
+import org.example.projetfinaltournois.service.BracketService;
 import org.example.projetfinaltournois.service.TournamentService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
-public class TournamentController {
     @RestController
     @RequestMapping("/api/tournaments")
 
-    public static class TournamentController {
+    public  class TournamentController {
 
         private final TournamentService tournamentService;
         private final BracketService bracketService;
@@ -68,4 +70,3 @@ public class TournamentController {
 
 
     }
-}
