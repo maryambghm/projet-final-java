@@ -29,7 +29,12 @@ public class SecurityConfig {
                 .cors(cors -> cors.disable())
                 .exceptionHandling(e-> e.authenticationEntryPoint(entryPoint))
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(r -> r.requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated())
+                .authorizeHttpRequests(r -> r
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/private/**").hasAnyRole("PLAYER", "ADMIN")
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
                 .httpBasic(c-> {});
         httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

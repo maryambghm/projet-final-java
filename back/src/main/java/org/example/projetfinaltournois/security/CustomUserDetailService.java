@@ -31,7 +31,8 @@ public class CustomUserDetailService implements UserDetailsService {
         if (userOptional.isPresent()){
             org.example.projetfinaltournois.entity.User user = userOptional.get();
             Set<GrantedAuthority> authorities = new HashSet<>();
-            authorities.add(new SimpleGrantedAuthority("user"));
+            if (user.getRole().toString().equals("ADMIN")) authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            else authorities.add(new SimpleGrantedAuthority("ROLE_PLAYER"));
             return new User(user.getEmail(), user.getPassword(),authorities);
         }
         return null;
