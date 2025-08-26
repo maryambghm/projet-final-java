@@ -1,0 +1,86 @@
+<div class="auth">
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="card">
+    <h1>Update profile</h1>
+
+    <!-- Avatar + aperçu -->
+    <div class="field field-row">
+      <div class="avatar-wrap">
+        <img class="avatar-preview" [src]="updateForm?.get('avatar')?.value || '/assets/images/avatar-placeholder.png'" alt="avatar preview">
+      </div>
+      <div class="grow">
+        <label for="avatar">Avatar URL</label>
+        <input
+          type="url"
+          id="avatar"
+          formControlName="avatar"
+          placeholder="https://example.com/avatar.jpg"
+        />
+      </div>
+    </div>
+
+    <!-- First Name -->
+    <div class="field">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        id="firstname"
+        formControlName="firstname"
+        placeholder="Enter your first name"
+        required
+      />
+      @if (updateForm.get('firstname')?.hasError('required') &&
+            updateForm.get('firstname')?.touched) {
+        <p class="error">champ obligatoire</p>
+      }
+    </div>
+
+    <!-- Last Name -->
+    <div class="field">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        id="lastname"
+        formControlName="lastname"
+        placeholder="Enter your last name"
+        required
+      />
+      @if (updateForm.get('lastname')?.hasError('required') &&
+            updateForm.get('lastname')?.touched) {
+        <p class="error">champ obligatoire</p>
+      }
+    </div>
+
+    <!-- New Password -->
+    <div class="field">
+      <label for="password">New password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Enter your new password"
+      />
+      <p class="hint">Laisse vide si tu ne veux pas changer le mot de passe.</p>
+    </div>
+
+    <!-- Confirm New Password -->
+    <div class="field">
+      <label for="confirmPassword">Confirm new password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        placeholder="Repeat your new password"
+      />
+      @if (updateForm.hasError('passwordMismatch') &&
+            updateForm.get('confirmPassword')?.touched) {
+        <p class="error">Passwords do not match</p>
+      }
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button type="button" class="secondary" routerLink="/dashboard">Cancel</button>
+      <button type="submit" class="primary" [disabled]="updateForm.invalid">Save changes</button>
+    </div>
+  </form>
+</div>

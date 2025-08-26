@@ -9,11 +9,11 @@ import {
 } from '@angular/forms';
 import { UserType } from '../../utils/types/user-type';
 import { UserService } from '../../utils/services/user-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register-form.html',
   styleUrl: './register-form.css',
 })

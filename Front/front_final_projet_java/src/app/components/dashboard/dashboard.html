@@ -1,1 +1,109 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+
+  <!-- Sidebar / Profil -->
+  <aside class="sidebar card">
+    <div class="profile">
+      <img class="avatar" src="/assets/images/avatar-placeholder.png" alt="User avatar">
+      <h2 class="name">John Doe</h2>
+      <p class="email">john@company.com</p>
+
+      <!-- Choisis : routerLink vers une page d’édition OU toggle lock (plus tard en TS) -->
+      <div class="buttons">
+        <button class="primary" routerLink="/profile/edit">Modifier</button>
+      </div>
+
+      <ul class="info">
+        <li><span>Membre depuis</span><strong>2024</strong></li>
+        <li><span>Pays</span><strong>France</strong></li>
+        <li><span>Level</span><strong>Diamond</strong></li>
+      </ul>
+    </div>
+
+    <nav class="quick-links">
+      <a routerLink="/dashboard" class="qa">Aperçu</a>
+      <a routerLink="/dashboard/tournaments" class="qa">Mes tournois</a>
+      <a routerLink="/dashboard/settings" class="qa">Paramètres</a>
+    </nav>
+  </aside>
+
+  <!-- Contenu principal -->
+  <main class="main">
+    <header class="topbar">
+      <h1>All statistics</h1>
+      <div class="actions">
+        <button class="secondary" routerLink="/profile/edit">Mettre à jour</button>
+      </div>
+    </header>
+
+    <!-- KPIs -->
+    <section class="kpis">
+      <div class="kpi card">
+        <h3>Tournois participés</h3>
+        <p class="value">24</p>
+        <p class="sub">+3 ce mois</p>
+      </div>
+      <div class="kpi card">
+        <h3>Tournois gagnés</h3>
+        <p class="value">6</p>
+        <p class="sub">Taux 25%</p>
+      </div>
+      <div class="kpi card">
+        <h3>Matchs joués</h3>
+        <p class="value">182</p>
+        <p class="sub">+12 cette semaine</p>
+      </div>
+      <div class="kpi card">
+        <h3>Matchs gagnés</h3>
+        <p class="value">121</p>
+        <p class="sub">Winrate 66%</p>
+      </div>
+    </section>
+
+    <!-- Graphs (placeholders visuels, à brancher plus tard) -->
+    <section class="graphs">
+      <div class="card chart">
+        <h3>Résultats par mois</h3>
+        <div class="chart-placeholder">Bar/Area chart ici</div>
+      </div>
+      <div class="card radial">
+        <h3>Win rate</h3>
+        <div class="radial-placeholder">45%</div>
+        <ul class="legend">
+          <li><span class="dot"></span> Victoires</li>
+          <li><span class="dot dot-alt"></span> Défaites</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Jeux favoris -->
+    <section class="favorites card">
+      <h3>Jeux favoris</h3>
+      <ul class="chips">
+        <li class="chip">Valorant</li>
+        <li class="chip">Rocket League</li>
+        <li class="chip">Apex</li>
+        <li class="chip">Overwatch</li>
+      </ul>
+    </section>
+
+    <!-- Historique récent -->
+    <section class="recent card">
+      <h3>Derniers matchs</h3>
+      <div class="table-like">
+        <div class="row head">
+          <span>Date</span><span>Jeu</span><span>Adversaire</span><span>Résultat</span><span>Points</span>
+        </div>
+        <div class="row">
+          <span>2025-03-12</span><span>Valorant</span><span>Team Nova</span><span class="win">Win</span><span>13-9</span>
+        </div>
+        <div class="row">
+          <span>2025-03-10</span><span>Rocket League</span><span>Boosted</span><span class="lose">Lose</span><span>1-3</span>
+        </div>
+        <div class="row">
+          <span>2025-03-07</span><span>Apex</span><span>Trios</span><span class="win">Top 1</span><span>8 kills</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>

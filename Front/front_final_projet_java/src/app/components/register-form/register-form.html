@@ -1,9 +1,9 @@
-<div class="register-container">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h2>Register</h2>
+<div class="auth">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="card">
+    <h1>Sign up</h1>
 
     <!-- Email -->
-    <div class="form-group">
+    <div class="field">
       <label for="email">Email</label>
       <input
         type="email"
@@ -13,13 +13,13 @@
         required
       />
       @if (registerForm.get('email')?.hasError('required') &&
-      registerForm.get('email')?.touched){
-      <p>champ obligatoire</p>
+            registerForm.get('email')?.touched) {
+        <p class="error">champ obligatoire</p>
       }
     </div>
 
     <!-- First Name -->
-    <div class="form-group">
+    <div class="field">
       <label for="firstname">First Name</label>
       <input
         type="text"
@@ -29,13 +29,13 @@
         required
       />
       @if (registerForm.get('firstname')?.hasError('required') &&
-      registerForm.get('firstname')?.touched){
-      <p>champ obligatoire</p>
+            registerForm.get('firstname')?.touched) {
+        <p class="error">champ obligatoire</p>
       }
     </div>
 
     <!-- Last Name -->
-    <div class="form-group">
+    <div class="field">
       <label for="lastname">Last Name</label>
       <input
         type="text"
@@ -45,13 +45,13 @@
         required
       />
       @if (registerForm.get('lastname')?.hasError('required') &&
-      registerForm.get('lastname')?.touched){
-      <p>champ obligatoire</p>
+            registerForm.get('lastname')?.touched) {
+        <p class="error">champ obligatoire</p>
       }
     </div>
 
     <!-- Avatar -->
-    <div class="form-group">
+    <div class="field">
       <label for="avatar">Avatar URL</label>
       <input
         type="url"
@@ -59,14 +59,10 @@
         formControlName="avatar"
         placeholder="https://example.com/avatar.jpg"
       />
-      @if (registerForm.get('avatar')?.hasError('required') &&
-      registerForm.get('avatar')?.touched){
-      <p>champ obligatoire</p>
-      }
     </div>
 
     <!-- Password -->
-    <div class="form-group">
+    <div class="field">
       <label for="password">Password</label>
       <input
         type="password"
@@ -77,13 +73,31 @@
       />
     </div>
 
-    <!-- Confirm Button -->
-    <button type="submit" [disabled]="registerForm.invalid">Confirm</button>
+    <!-- Confirm Password (optionnel, voir logique plus bas) -->
+    <div class="field" *ngIf="registerForm.get('confirmPassword')">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        placeholder="Repeat your password"
+        required
+      />
+      @if (registerForm.hasError('passwordMismatch') &&
+            registerForm.get('confirmPassword')?.touched) {
+        <p class="error">Passwords do not match</p>
+      }
+    </div>
 
-    <!-- Sign-in Redirect -->
-    <p class="redirect-text">
+    <!-- Confirm Button -->
+    <button type="submit" class="primary" [disabled]="registerForm.invalid">
+      Confirm
+    </button>
+
+    <!-- Redirect -->
+    <p class="meta">
       Already have an account ?
-      <a routerLink="/">Sign in</a>
+      <a routerLink="/login">Sign in</a>
     </p>
   </form>
 </div>
