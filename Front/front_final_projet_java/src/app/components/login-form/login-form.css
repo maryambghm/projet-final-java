@@ -1,0 +1,100 @@
+:host {
+  display: block;
+  color: #fff;
+}
+
+/* conteneur centré dans la zone 2 (scrollable si petit écran) */
+.auth {
+  display: grid;
+  place-items: start center;
+  padding: clamp(16px, 4vw, 32px);
+}
+
+/* carte sombre harmonisée avec le thème */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(15, 14, 18, 0.8);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  padding: 22px;
+}
+
+.card h1 {
+  margin: 6px 0 18px;
+  font-size: clamp(1.25rem, 2.8vw, 1.6rem);
+}
+
+/* Champs */
+.field { margin-bottom: 14px; }
+label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,.85);
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: 0 12px;
+  outline: none;
+  transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+
+input::placeholder { color: rgba(255,255,255,.6); }
+
+input:focus {
+  border-color: rgba(255,255,255,.38);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.1);
+}
+
+/* Bouton principal – même style que le CTA Home */
+button.primary {
+  width: 100%;
+  height: 44px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  transition: transform .15s ease, background-color .15s ease, opacity .15s ease;
+}
+
+button.primary:hover { transform: translateY(-1px); background: #f1f1f1; }
+button.primary:active { transform: translateY(0); opacity: .95; }
+
+/* Ligne du bas */
+.meta {
+  margin: 18px 0 4px;
+  text-align: center;
+  color: rgba(255,255,255,.75);
+  font-size: 0.92rem;
+}
+
+.meta a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,.4);
+  padding-bottom: 1px;
+}
+
+.meta a:hover {
+  border-bottom-color: rgba(255,255,255,.9);
+}
+
+/* Petits écrans */
+@media (max-width: 420px) {
+  .card { padding: 18px; border-radius: 12px; }
+}

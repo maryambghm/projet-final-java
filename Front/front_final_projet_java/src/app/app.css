@@ -1,0 +1,64 @@
+/* === App root grid (3 zones) ============================================ */
+:host {
+  /* Layout */
+  display: grid;
+  grid-template-rows: auto 1fr auto;   /* menu | contenu extensible | footer */
+  grid-template-columns: 100%;
+  grid-auto-flow: row;
+
+  /* Plein écran + robustesse mobile */
+  min-height: 100svh;                  /* svh = viewport sûr (iOS bars) */
+  width: 100%;
+  min-width: 0;                        /* évite les overflows des enfants */
+
+  /* Optionnel : fond neutre sombre (maquette) */
+  background: #0b0a0d;
+  color: inherit;
+
+  /* Évite un double scroll global, on délègue au centre */
+  overflow: hidden;
+}
+
+/* Zone 1 : menu (placé en row 1 automatiquement) */
+:host > app-menu {
+  grid-row: 1;
+  min-width: 0;
+  z-index: 10;                         /* utile si le contenu a des bannières */
+}
+
+/* Zone 2 claire et unique */
+.content {
+  grid-row: 2;
+  min-width: 0;
+  overflow: auto;
+}
+
+/* Zone 3 : footer (row 3) collé en bas */
+:host > app-footer {
+  grid-row: 3;
+  min-width: 0;
+}
+
+/* ——— Responsive helpers (facultatif) ———————————————— */
+/* Petites largeurs : respire un peu sur les côtés */
+@media (max-width: 639px) {
+  :host > :not(app-menu):not(app-footer) {
+    padding-inline: 16px;
+  }
+}
+
+/* ≥ tablette : un peu plus d’air */
+@media (min-width: 640px) {
+  :host > :not(app-menu):not(app-footer) {
+    padding-inline: 24px;
+  }
+}
+
+/* ≥ desktop large : largeur contenue si tu le souhaites (décommente au besoin) */
+/*
+:host > :not(app-menu):not(app-footer) {
+  margin-inline: auto;
+  max-width: 1200px;
+  width: 100%;
+}
+*/

@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+
+/* --- FOOTER ------------------------------------------------------------ */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  padding: 12px 18px;
+  background: radial-gradient(120% 140% at 0% 0%, #2a0e0f 0%, #0b0a0d 60%);
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px 14px 0 0;
+
+  font-size: 0.95rem;
+  color: rgba(255,255,255,.85);
+  min-height: 54px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Liens */
+.footer a {
+  text-decoration: none;
+  color: rgba(255,255,255,.92);
+  font-weight: 500;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background-color .15s ease, color .15s ease;
+  white-space: nowrap;
+}
+
+.footer a:hover,
+.footer a:focus-visible {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  outline: none;
+}
+
+/* Copyright à droite */
+.footer p {
+  margin-left: auto;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap;
+}
+
+/* --- Responsive -------------------------------------------------------- */
+@media (max-width: 560px) {
+  .footer {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer p {
+    flex: 1 1 100%;
+    margin: 6px 0 0;
+    text-align: center;
+  }
+}

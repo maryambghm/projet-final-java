@@ -1,1 +1,40 @@
-<p>tournaments works!</p>
+<div class="tournaments">
+  <header class="topbar">
+    <h1>All tournaments</h1>
+  </header>
+
+  <div class="table card" role="region" aria-label="Tournaments list">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Name</th>
+          <th scope="col" class="col-type">Type</th>
+          <th scope="col" class="col-actions">More details</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (tournaments.length === 0) {
+          <tr class="empty">
+            <td colspan="4">
+              <div class="empty-state">
+                <p>No tournaments yet.</p>
+              </div>
+            </td>
+          </tr>
+        }
+        @for (t of tournaments; track t.id) {
+          <tr>
+            <td>{{ t.date | date:'mediumDate' }}</td>
+            <td>{{ t.name }}</td>
+            <td class="col-type">{{ t.type }}</td>
+            <td class="col-actions">
+              <a class="btn secondary" [routerLink]="['/tournament', t.id]">More details</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

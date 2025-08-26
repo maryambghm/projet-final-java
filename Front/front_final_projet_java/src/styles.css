@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+*, ::before, ::after{
+    box-sizing: border-box;
+    margin:0;
+    margin:0;
+}
+
+body{
+     height:100vh;
+     width:100%;
+     background-color:bisque;
+}
+
