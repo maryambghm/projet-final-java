@@ -2,20 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for projet-final-tournois" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
-        <module name="projet-final-tournois" />
-      </profile>
+      <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="projet-final-tournois" options="-parameters" />
-    </option>
+    <bytecodeTargetLevel>
+      <module name="projet-final-tournois" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

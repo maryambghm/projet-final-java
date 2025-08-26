@@ -1,0 +1,89 @@
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Register</h2>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        required
+      />
+      @if (registerForm.get('email')?.hasError('required') &&
+      registerForm.get('email')?.touched){
+      <p>champ obligatoire</p>
+      }
+    </div>
+
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        id="firstname"
+        formControlName="firstname"
+        placeholder="Enter your first name"
+        required
+      />
+      @if (registerForm.get('firstname')?.hasError('required') &&
+      registerForm.get('firstname')?.touched){
+      <p>champ obligatoire</p>
+      }
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        id="lastname"
+        formControlName="lastname"
+        placeholder="Enter your last name"
+        required
+      />
+      @if (registerForm.get('lastname')?.hasError('required') &&
+      registerForm.get('lastname')?.touched){
+      <p>champ obligatoire</p>
+      }
+    </div>
+
+    <!-- Avatar -->
+    <div class="form-group">
+      <label for="avatar">Avatar URL</label>
+      <input
+        type="url"
+        id="avatar"
+        formControlName="avatar"
+        placeholder="https://example.com/avatar.jpg"
+      />
+      @if (registerForm.get('avatar')?.hasError('required') &&
+      registerForm.get('avatar')?.touched){
+      <p>champ obligatoire</p>
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+
+    <!-- Confirm Button -->
+    <button type="submit" [disabled]="registerForm.invalid">Confirm</button>
+
+    <!-- Sign-in Redirect -->
+    <p class="redirect-text">
+      Already have an account ?
+      <a routerLink="/">Sign in</a>
+    </p>
+  </form>
+</div>
