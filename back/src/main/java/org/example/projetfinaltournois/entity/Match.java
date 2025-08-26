@@ -22,6 +22,7 @@ public abstract class Match {
     @GeneratedValue
     @Column(name = "id_match")
     private UUID idMatch;
+
     @Column(nullable = false, name = "match_starting_date")
     private LocalDateTime matchStartingDate;
 

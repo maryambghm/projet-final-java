@@ -43,7 +43,7 @@ public interface MatchTeamRepository extends JpaRepository<MatchTeam, UUID> {
     long countTeamLossesByUser_Id(User user);
 
     // Match Team d'un tournoi trié par date de début
-    List<MatchTeam> findByTournament_Id_OrderByStartingDateAsc(UUID tournamentId);
+    List<MatchTeam> findByTournament_IdOrderByMatchStartingDateAsc(UUID tournamentId);
 
 
 }

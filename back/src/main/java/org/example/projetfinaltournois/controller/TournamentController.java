@@ -29,7 +29,7 @@ import java.util.UUID;
             return ResponseEntity.ok(tournamentService.create(tournament));
         }
 
-        @GetMapping("/{id")
+        @GetMapping("/{id}")
         public ResponseEntity<Tournament> getTournamentById(@PathVariable UUID id) {
             return ResponseEntity.ok(tournamentService.getById(id));
         }
@@ -39,7 +39,7 @@ import java.util.UUID;
             return ResponseEntity.ok(tournamentService.getAllTournaments());
         }
 
-        @PutMapping("/{id]")
+        @PutMapping("/{id}")
         public ResponseEntity<Tournament> update(@PathVariable UUID id, @RequestBody Tournament tournament) {
             return ResponseEntity.ok(tournamentService.update(id, tournament));
         }
@@ -57,13 +57,13 @@ import java.util.UUID;
             return ResponseEntity.ok("Tournament registered");
         }
 
-        @DeleteMapping("/{id}/register/{userId]")
+        @DeleteMapping("/{id}/register/{userId}")
         public ResponseEntity<String> deleteTournament(@PathVariable UUID id, @PathVariable UUID userId) {
             tournamentService.unregister(id, userId);
             return ResponseEntity.ok("Tournament deleted");
         }
 
-        @GetMapping("/{id]/register/participants")
+        @GetMapping("/{id}/register/participants")
         public ResponseEntity<List<User>> participants(@PathVariable UUID id) {
             return ResponseEntity.ok(tournamentService.listParticipants(id));
         }
