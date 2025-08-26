@@ -16,6 +16,8 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Table(name = "match_team")
 public class MatchTeam extends Match {
     @ManyToMany
     @JoinTable(

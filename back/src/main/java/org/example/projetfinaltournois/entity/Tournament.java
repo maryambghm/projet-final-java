@@ -17,27 +17,31 @@ import java.util.UUID;
 @AllArgsConstructor
 @Data
 @Builder
-
+@Table(name = "tournament")
 public class Tournament {
     @Id
     @GeneratedValue
+    @Column(name = "id_tournament")
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "tournament_name")
     private String tournamentName;
 
     // Category jeu
+    @Column(name = "game_type")
     private Game gameType;
 
     // Double ou simple élimination
+    @Column(name = "match_format")
     private MatchFormat matchFormat;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "starting_date")
     private LocalDateTime startingDate;
 
+    @Column(name = "ended_date")
     private LocalDateTime endedDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "max_player")
     private int maximumPlayer;
 
 // Vue globale des matchs

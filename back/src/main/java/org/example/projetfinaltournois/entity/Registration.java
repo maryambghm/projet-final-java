@@ -17,7 +17,8 @@ import lombok.NoArgsConstructor;
 public class Registration {
     @Id
     @GeneratedValue
-    private long id;
+    @Column(name = "id_registration")
+    private long idRegistration;
 
     @ManyToOne(optional = false)
     private User user;

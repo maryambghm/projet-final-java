@@ -20,11 +20,17 @@ import java.util.UUID;
 public abstract class Match {
     @Id
     @GeneratedValue
-    private UUID id;
+    @Column(name = "id_match")
+    private UUID idMatch;
+    @Column(nullable = false, name = "match_starting_date")
     private LocalDateTime matchStartingDate;
+
+    @Column(nullable = false, name = "match_starting_date")
     private LocalDateTime matchEndingDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Tournament tournament;
+
+    @Column(nullable = false, name = "point_to_win")
     private int pointsToWin;
 }
