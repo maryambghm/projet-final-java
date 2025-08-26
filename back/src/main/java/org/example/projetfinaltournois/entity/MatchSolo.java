@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@Table(name = "match_solo")
 public class MatchSolo extends Match{
 
     @ManyToOne

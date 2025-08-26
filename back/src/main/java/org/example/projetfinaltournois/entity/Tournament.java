@@ -28,6 +28,7 @@ public class Tournament {
     private String tournamentName;
 
     // Category jeu
+    @Enumerated(EnumType.STRING)
     @Column(name = "game_type")
     private Game gameType;
 

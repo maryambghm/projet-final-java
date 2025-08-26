@@ -13,11 +13,10 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("TEAM")
 @Data
-@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 
-@Table(name = "match_team")
 public class MatchTeam extends Match {
     @ManyToMany
     @JoinTable(
