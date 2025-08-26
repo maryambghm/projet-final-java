@@ -11,15 +11,16 @@ import java.util.UUID;
 public interface RegistrationRepository extends JpaRepository<Registration, Long> {
 
     // Vérifier si un User deja inscrit dans un tournoi
-boolean existsByUser_IdAndTournament_Id(UUID userId, UUID tournamentId);
+    boolean existsByUser_IdUserAndTournament_Id(UUID userId, UUID tournamentId);
 
 // Compter inscrits (pour vérifier max )
-    long countByTournament_Id(UUID tournamentId);
+long countByTournament_Id(UUID tournamentId);
 
     // Lister inscrits d'un tournoi
+
     List<Registration> findByTournament_Id(UUID tournamentId);
 
     // Déscrinscription par admin
-    void deleteByUser_IDAndTournament_Id(UUID tournamentId, UUID userId);
+    void deleteByUser_IdUserAndTournament_Id(UUID userId, UUID tournamentId);
 
 }

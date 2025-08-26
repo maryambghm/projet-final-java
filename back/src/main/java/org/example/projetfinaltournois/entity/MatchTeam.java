@@ -16,7 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Table(name = "match_team")
 public class MatchTeam extends Match {
     @ManyToMany
     @JoinTable(
@@ -34,6 +33,6 @@ public class MatchTeam extends Match {
     )
     private List<User> teamB;
 
-
+    @Enumerated(EnumType.STRING)
     private TeamSide winnerSide;
 }

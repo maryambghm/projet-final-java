@@ -28,10 +28,12 @@ public class Tournament {
     private String tournamentName;
 
     // Category jeu
+    @Enumerated(EnumType.STRING)
     @Column(name = "game_type")
     private Game gameType;
 
     // Double ou simple élimination
+    @Enumerated(EnumType.STRING)
     @Column(name = "match_format")
     private MatchFormat matchFormat;
 

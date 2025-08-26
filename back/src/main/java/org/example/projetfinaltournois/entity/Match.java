@@ -25,7 +25,7 @@ public abstract class Match {
     @Column(nullable = false, name = "match_starting_date")
     private LocalDateTime matchStartingDate;
 
-    @Column(nullable = false, name = "match_starting_date")
+    @Column(nullable = false, name = "match_ending_date")
     private LocalDateTime matchEndingDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

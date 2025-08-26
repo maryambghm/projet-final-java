@@ -61,12 +61,12 @@ public class TournamentService {
         long count = registrationRepo.countByTournament_Id(idTournament);
         if (count >= t.getMaximumPlayer()) throw new IllegalStateException("Tournament full");
 
-        if (registrationRepo.existsByUser_IdAndTournament_Id(userId, idTournament)) return;
+        if (registrationRepo.existsByUser_IdUserAndTournament_Id(userId, idTournament)) return;
         registrationRepo.save(Registration.builder().tournament(t).user(u).build());
     }
 
     public void unregister(UUID tournamentId, UUID userId) {
-        registrationRepo.deleteByUser_IDAndTournament_Id(userId, tournamentId);
+        registrationRepo.deleteByUser_IdUserAndTournament_Id(userId, tournamentId);
     }
 
     public List<User> listParticipants(UUID tournamentId) {
