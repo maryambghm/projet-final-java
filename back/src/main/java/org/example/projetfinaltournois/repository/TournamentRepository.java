@@ -13,4 +13,5 @@ public interface TournamentRepository extends JpaRepository<Tournament, UUID> {
 
     List<Tournament> findByGameType(Game gameType);
 
+
 }

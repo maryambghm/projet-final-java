@@ -1,9 +1,13 @@
 package org.example.projetfinaltournois.controller;
 
+import jakarta.validation.Valid;
+import org.example.projetfinaltournois.dto.TournamentReceiveDto;
+import org.example.projetfinaltournois.dto.TournamentResponseDto;
 import org.example.projetfinaltournois.entity.Tournament;
 import org.example.projetfinaltournois.entity.User;
 import org.example.projetfinaltournois.service.BracketService;
 import org.example.projetfinaltournois.service.TournamentService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,24 +28,25 @@ import java.util.UUID;
         }
 
         // CRUD
-        @PostMapping
-        public ResponseEntity<Tournament> createTournament(@RequestBody Tournament tournament) {
-            return ResponseEntity.ok(tournamentService.create(tournament));
+        @PostMapping()
+        public ResponseEntity<TournamentResponseDto> createTournament(@RequestBody @Valid TournamentReceiveDto tournament) {
+            TournamentResponseDto created = tournamentService.create(tournament);
+            return ResponseEntity.status(HttpStatus.CREATED).body(created);
         }
 
         @GetMapping("/{id}")
-        public ResponseEntity<Tournament> getTournamentById(@PathVariable UUID id) {
+        public ResponseEntity<TournamentResponseDto> getTournamentById(@PathVariable UUID id) {
             return ResponseEntity.ok(tournamentService.getById(id));
         }
 
-        @GetMapping
-        public ResponseEntity<List<Tournament>> getTournaments() {
+        @GetMapping()
+        public ResponseEntity<List<TournamentResponseDto>> getTournaments() {
             return ResponseEntity.ok(tournamentService.getAllTournaments());
         }
 
         @PutMapping("/{id}")
-        public ResponseEntity<Tournament> update(@PathVariable UUID id, @RequestBody Tournament tournament) {
-            return ResponseEntity.ok(tournamentService.update(id, tournament));
+        public ResponseEntity<TournamentResponseDto> update(@PathVariable UUID id, @RequestBody TournamentReceiveDto tournament) {
+            return ResponseEntity.ok(tournamentService.update(id, tournament).entityToDto());
         }
 
         @DeleteMapping("/{id}")

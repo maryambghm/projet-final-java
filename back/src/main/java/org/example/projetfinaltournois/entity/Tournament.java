@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.projetfinaltournois.dto.TournamentResponseDto;
 import org.example.projetfinaltournois.entity.enums.Game;
 import org.example.projetfinaltournois.entity.enums.MatchFormat;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collector;
 
 @Entity
 @NoArgsConstructor
@@ -43,14 +46,28 @@ public class Tournament {
     @Column(name = "ended_date")
     private LocalDateTime endedDate;
 
+
     @Column(nullable = false, name = "max_player")
     private int maximumPlayer;
 
-// Vue globale des matchs
-@OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Match> matchList;
 
+    // Vue globale des matchs
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Match> matchList;
 
-
+    public TournamentResponseDto entityToDto() {
+        return TournamentResponseDto.builder()
+                .id(this.id)
+                .tournamentName(this.tournamentName)
+                .startingDate(this.startingDate.toString())
+                .gameType(this.gameType.toString())
+                .endedDate(this.endedDate != null ? this.endedDate.toString() : null)
+                .maximumPlayer(this.maximumPlayer)
+                .matchFormat(this.matchFormat.name())
+                //.matches(this.matchList != null ? this.matchList.stream().map(Match::getIdMatch).toList():new ArrayList<>())
+                .matches(new ArrayList<>())
+                .build();
+    }
 }
+
 

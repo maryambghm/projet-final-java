@@ -13,8 +13,8 @@ public interface RegistrationRepository extends JpaRepository<Registration, Long
     // Vérifier si un User deja inscrit dans un tournoi
     boolean existsByUser_IdUserAndTournament_Id(UUID userId, UUID tournamentId);
 
-// Compter inscrits (pour vérifier max )
-long countByTournament_Id(UUID tournamentId);
+    // Compter inscrits (pour vérifier max )
+    long countByTournament_Id(UUID tournamentId);
 
     // Lister inscrits d'un tournoi
 

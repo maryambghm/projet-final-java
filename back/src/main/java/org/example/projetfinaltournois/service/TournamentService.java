@@ -1,5 +1,7 @@
 package org.example.projetfinaltournois.service;
 
+import org.example.projetfinaltournois.dto.TournamentReceiveDto;
+import org.example.projetfinaltournois.dto.TournamentResponseDto;
 import org.example.projetfinaltournois.entity.Registration;
 import org.example.projetfinaltournois.entity.Tournament;
 import org.example.projetfinaltournois.entity.User;
@@ -25,27 +27,32 @@ public class TournamentService {
     }
 
 
-    public Tournament create(Tournament tournament) {
+    public TournamentResponseDto create(TournamentReceiveDto tournament) {
         if (tournament.getMaximumPlayer() < 2) throw new IllegalArgumentException("maximum player must be >= 2");
-        return tournamentRepo.save(tournament);
+        Tournament created = tournamentRepo.save(tournament.dtoToEntity());
+        return created.entityToDto();
     }
 
-    public Tournament getById(UUID idTournament) {
-        return tournamentRepo.findById(idTournament).orElseThrow(() -> new IllegalArgumentException("Tournament not found"));
+    public TournamentResponseDto getById(UUID idTournament) {
+        Tournament t = tournamentRepo.findById(idTournament).orElseThrow(() -> new IllegalArgumentException("Tournament not found"));
+        return t.entityToDto();
     }
 
-    public List<Tournament> getAllTournaments() {
-        return tournamentRepo.findAll();
+    public List<TournamentResponseDto> getAllTournaments() {
+        return tournamentRepo.findAll().stream()
+                .map(Tournament::entityToDto).toList();
     }
 
-    public Tournament update(UUID idTournament, Tournament tournament) {
-        Tournament t = getById(idTournament);
-        t.setTournamentName(tournament.getTournamentName());
-        t.setGameType(tournament.getGameType());
-        t.setMatchFormat(tournament.getMatchFormat());
-        t.setStartingDate(tournament.getStartingDate());
-        t.setEndedDate(tournament.getEndedDate());
-        t.setMaximumPlayer(tournament.getMaximumPlayer());
+    public Tournament update(UUID idTournament, TournamentReceiveDto tournament) {
+        Tournament t = tournamentRepo.findById(idTournament).orElseThrow(() -> new IllegalArgumentException("Tournament not found"));
+        // MAJ
+        Tournament updateT = tournament.dtoToEntity();
+        t.setTournamentName(updateT.getTournamentName());
+        t.setGameType(updateT.getGameType());
+        t.setMatchFormat(updateT.getMatchFormat());
+        t.setStartingDate(updateT.getStartingDate());
+        t.setEndedDate(updateT.getEndedDate());
+        t.setMaximumPlayer(updateT.getMaximumPlayer());
         return tournamentRepo.save(t);
     }
 
@@ -55,8 +62,10 @@ public class TournamentService {
 
     // Inscriptions
     public void register(UUID idTournament, UUID userId) {
-        Tournament t = getById(idTournament);
-        User u = userRepo.findById(userId).orElseThrow(() -> new NotFoundException());
+        Tournament t = tournamentRepo.findById(idTournament)
+                .orElseThrow(() -> new IllegalArgumentException("Tournament not found"));
+        User u = userRepo.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         long count = registrationRepo.countByTournament_Id(idTournament);
         if (count >= t.getMaximumPlayer()) throw new IllegalStateException("Tournament full");
