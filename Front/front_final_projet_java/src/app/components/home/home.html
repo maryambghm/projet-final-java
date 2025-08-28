@@ -8,7 +8,12 @@
       <h3>
         Ready to enter the arena? Register now and join the competition!
       </h3>
-      <button routerLink="/discover" class="cta">Discover / Get started</button>
+          @if (token) {
+    <button routerLink="/tournaments" class="cta">Get started</button>
+  } @else {
+    <button routerLink="/login" class="cta">Discover</button>
+  }
+      
     </div>
 
     <div class="hero-img">
