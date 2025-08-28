@@ -3,6 +3,10 @@
   <a routerLink="/">Home</a>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/tournaments">Tournaments</a>
-  <a routerLink="/signin">Sign in | register</a>
+    @if (token) {
+    <button type="button" class="auth" (click)="logout()">Logout</button>
+  } @else {
+    <a routerLink="/login" class="auth">Log in</a>
+  }
 </nav>
 

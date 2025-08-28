@@ -21,4 +21,6 @@ public class GeneralAuthExceptionHandler {
         LoginResponseDto loginResponseDto = new LoginResponseDto("NotFound");
         return new ResponseEntity<>(loginResponseDto,HttpStatus.OK);
     }
+
+
 }
